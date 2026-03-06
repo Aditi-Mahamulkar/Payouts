@@ -1,0 +1,29 @@
+package com.example.DTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+public class CancelResponseDTO {
+
+    private String payoutItemId;
+    private String transactionId;
+    private String activityId;
+    private String payoutBatchId;
+    private String senderBatchId;
+    private String timeProcessed;
+
+    private List<LinkResponseDTO> links;
+
+    private String transactionStatus;
+
+    private AmountResponseDTO payoutItemFee;
+
+    private PayoutItemResponseDTO payoutItem;
+
+    private CurrencyConversionResponseDTO currencyConversion;
+
+    private ErrorResponseDTO errors;
+}
