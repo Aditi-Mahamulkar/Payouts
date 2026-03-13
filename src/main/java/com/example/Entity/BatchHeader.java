@@ -30,7 +30,7 @@ public class BatchHeader {
     private String payoutBatchId;
 
     @Column(name = "time_created")
-    private OffsetDateTime timeCreated;
+    private String timeCreated;
 
     @Column(name = "batch_status")
     private String batchStatus;

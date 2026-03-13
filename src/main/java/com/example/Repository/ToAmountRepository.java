@@ -1,14 +1,13 @@
 
-
 package com.example.Repository;
 
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.Errors;
+import com.example.Entity.ToAmount;
 
-public interface ErrorsRepo extends JpaRepository<Errors, UUID> {
+public interface ToAmountRepository extends JpaRepository<ToAmount, UUID> {
     
     
 }

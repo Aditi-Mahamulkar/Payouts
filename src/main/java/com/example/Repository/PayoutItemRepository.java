@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.FromAmount;
+import com.example.Entity.PayoutItem;
 
-public interface FromAmountRepo extends JpaRepository<FromAmount, UUID> {
+public interface PayoutItemRepository extends JpaRepository<PayoutItem, UUID> {
     
     
 }

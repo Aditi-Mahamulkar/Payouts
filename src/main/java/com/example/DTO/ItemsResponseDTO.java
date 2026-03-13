@@ -20,4 +20,13 @@ public class ItemsResponseDTO {
     private PayoutItemResponseDTO payout_item;
 
     private CurrencyConversionResponseDTO currency_conversion;
+
+    
 }
+
+/*
+public String getSenderItemId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSenderItemId'");
+    }
+*/

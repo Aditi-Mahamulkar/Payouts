@@ -1,14 +1,13 @@
 
-
 package com.example.Repository;
 
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.Phone;
+import com.example.Entity.Fees;
 
-public interface PhoneRepo extends JpaRepository<Phone, UUID> {
+public interface FeesRepository extends JpaRepository<Fees, UUID> {
     
     
 }

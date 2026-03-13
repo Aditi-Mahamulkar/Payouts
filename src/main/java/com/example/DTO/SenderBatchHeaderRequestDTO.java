@@ -10,7 +10,8 @@ import lombok.Data;
 public class SenderBatchHeaderRequestDTO {
 
   private String senderBatchId;
+  private String recipientType;
   private String emailSubject;
   private String emailMessage;
-  private String recipientType;
+  private String note;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class createRequestDTO {
    
-    private List<ItemsRequestDTO> items;
+    private ItemsRequestDTO items;
     private SenderBatchHeaderRequestDTO senderBatchHeader;
     
 }

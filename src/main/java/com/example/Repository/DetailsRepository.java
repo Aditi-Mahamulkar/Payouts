@@ -1,13 +1,14 @@
 
+
 package com.example.Repository;
 
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.Items;
+import com.example.Entity.Details;
 
-public interface ItemsRepo extends JpaRepository<Items, UUID> {
+public interface DetailsRepository extends JpaRepository<Details, UUID> {
     
     
 }

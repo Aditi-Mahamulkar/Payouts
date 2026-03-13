@@ -18,5 +18,6 @@ public class BatchHeaderResponseDTO {
 
   private AmountRequestDTO amount;
   private AmountRequestDTO fees;
+  public String getSenderBatchId;
 
 }

@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.BatchHeader;
+import com.example.Entity.Links;
 
-public interface BatchHeaderRepo extends JpaRepository<BatchHeader, UUID> {
+public interface LinksRepository extends JpaRepository<Links, UUID> {
     
     
 }

@@ -47,4 +47,34 @@ public class Items {
     @OneToOne
     @JoinColumn(name = "application_context_id")
     private ApplicationContext applicationContext;
+
+    public void setPayoutItemId(String payout_item_id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPayoutItemId'");
+    }
+
+    public void setTransactionId(String transaction_id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTransactionId'");
+    }
+
+    public void setActivityId(String activity_id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setActivityId'");
+    }
+
+    public void payoutbatchid(String payoutBatchId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'payoutbatchid'");
+    }
+
+    public void setTimeProcessed(String time_processed) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTimeProcessed'");
+    }
+
+    public void transactionStatus(String transaction_status) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'transactionStatus'");
+    }
 }

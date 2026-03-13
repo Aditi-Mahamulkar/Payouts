@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.RecipientName;
+import com.example.Entity.BatchHeader;
 
-public interface RecipientNameRepo extends JpaRepository<RecipientName, UUID> {
+public interface BatchHeaderRepository extends JpaRepository<BatchHeader, UUID> {
     
     
 }

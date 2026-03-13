@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.Fees;
+import com.example.Entity.RecipientName;
 
-public interface FeesRepo extends JpaRepository<Fees, UUID> {
+public interface RecipientNameRepository extends JpaRepository<RecipientName, UUID> {
     
     
 }

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.Entity.CurrencyConversion;
 
-public interface CurrencyConversionRepo extends JpaRepository<CurrencyConversion, UUID> {
+public interface CurrencyConversionRepository extends JpaRepository<CurrencyConversion, UUID> {
     
     
 }

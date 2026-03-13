@@ -8,6 +8,6 @@ import java.util.List;
 @AllArgsConstructor
 public class createResponseDTO {
 
-    private List<LinkResponseDTO> links;
+    private LinkResponseDTO links;
     private BatchHeaderResponseDTO batchHeader;
 }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.Entity.ApplicationContext;
 
-public interface ApplicationContextRepo extends JpaRepository<ApplicationContext, UUID> {
+public interface ApplicationContextRepository extends JpaRepository<ApplicationContext, UUID> {
     
     
 }

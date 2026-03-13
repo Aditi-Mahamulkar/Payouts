@@ -1,6 +1,4 @@
 package com.example.Entity;
-
-import java.math.BigDecimal;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -24,9 +22,9 @@ public class Amount {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "currency", nullable = false)
+    @Column(name = "currency")
     private String currency;
 
-    @Column(name = "value", nullable = false)
-    private BigDecimal value;
+    @Column(name = "value")
+    private String value;
 }
