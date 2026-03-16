@@ -2,6 +2,7 @@ package com.example.Entity;
 
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,11 @@ public class AlternateNotificationMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @OneToOne
-    @JoinColumn(name = "phone_id")
-    private Phone phone;
+    @OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "phone_id")
+private Phone phone;
+    public void save(AlternateNotificationMethod alternateNotificationMethod) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 }

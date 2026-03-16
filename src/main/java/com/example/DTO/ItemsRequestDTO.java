@@ -19,5 +19,7 @@ public class ItemsRequestDTO {
 
     private ApplicationContextRequestDTO application_context;
 
+    private SenderBatchHeaderRequestDTO senderBatchHeader;
+
     private String purpose;
 }

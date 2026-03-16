@@ -23,12 +23,17 @@ public class Phone {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "country_code", nullable = false)
+    @Column(name = "country_code")
     private String countryCode;
 
-    @Column(name = "national_number", nullable = false)
+    @Column(name = "national_number")
     private String nationalNumber;
 
-    @Column(name = "extension_number")
-    private String extensionNumber;
+   // @Column(name = "extension_number")
+   // private String extensionNumber;
+
+    public void save(Phone phone) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 }

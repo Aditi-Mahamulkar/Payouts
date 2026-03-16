@@ -9,7 +9,7 @@ import com.example.DTO.createResponseDTO;
 
 public interface PayoutService {
 
-    createResponseDTO createPayout(ItemsRequestDTO requestDTO);
+    createResponseDTO createPayout(createRequestDTO requestDTO);
 
     // ShowPayoutBatchResponseDTO  getBatchDetails(String payout_batch_Id);
 

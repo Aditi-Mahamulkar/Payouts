@@ -5,6 +5,7 @@ import java.util.function.ToIntBiFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.DTO.AmountRequestDTO;
 import com.example.DTO.AmountResponseDTO;
 import com.example.DTO.BatchHeaderResponseDTO;
 import com.example.DTO.CancelResponseDTO;
@@ -42,7 +43,10 @@ import com.example.Entity.Phone;
 import com.example.Entity.RecipientName;
 import com.example.Entity.SenderBatchHeader;
 import com.example.Entity.ToAmount;
+import com.example.Repository.AlternateNotificationMethodRepository;
+import com.example.Repository.AmountRepository;
 import com.example.Repository.ItemsRepository;
+import com.example.Repository.PhoneRepository;
 import com.example.Repository.SenderBatchHeaderRepository;
 import com.example.Service.PayoutService;
 
@@ -50,23 +54,30 @@ import com.example.Service.PayoutService;
 public class PayoutServiceImpl implements PayoutService {
     private ItemsRepository itemsRepo;
     private SenderBatchHeaderRepository senderBatchHeaderRepository;
-
+    private AmountRepository amountRepository;
+    private AlternateNotificationMethodRepository alternateNotificationMethodRepository;
+    private PhoneRepository phoneRepository;
+    
     
 @Autowired
-public PayoutServiceImpl(ItemsRepository itemsRepo, SenderBatchHeaderRepository senderBatchHeaderRepository) {
+public PayoutServiceImpl(ItemsRepository itemsRepo, SenderBatchHeaderRepository senderBatchHeaderRepository, PhoneRepository phoneRepository, AlternateNotificationMethodRepository alternateNotificationMethodRepository, AmountRepository amountRepository) {
         this.itemsRepo = itemsRepo;
         this.senderBatchHeaderRepository = senderBatchHeaderRepository;
+        this.amountRepository = amountRepository;
+        this.alternateNotificationMethodRepository = alternateNotificationMethodRepository;
+        this.phoneRepository = phoneRepository;
     }
 
 
 
     @Override
-    public createResponseDTO createPayout(ItemsRequestDTO requestDTO) {
+    public createResponseDTO createPayout(createRequestDTO requestDTO) {
 
         //Initialize DTOs
          createResponseDTO responseDTO = new createResponseDTO(null, null);
-        ItemsRequestDTO itemsRequestDTO = new ItemsRequestDTO();
-        SenderBatchHeaderRequestDTO senderBatchHeaderRequestDTO = new SenderBatchHeaderRequestDTO();    
+        ItemsRequestDTO itemsRequestDTO = requestDTO.getItems();
+        SenderBatchHeaderRequestDTO senderBatchHeaderRequestDTO = requestDTO.getSenderBatchHeader();
+            
         LinkResponseDTO linkResponseDTO = new LinkResponseDTO();
         BatchHeaderResponseDTO batchHeaderResponseDTO = new BatchHeaderResponseDTO();
         SenderBatchHeaderResponseDTO senderBatchHeaderResponseDTO = new SenderBatchHeaderResponseDTO();
@@ -76,62 +87,82 @@ public PayoutServiceImpl(ItemsRepository itemsRepo, SenderBatchHeaderRepository 
         Amount amount = new Amount();
         AlternateNotificationMethod alternateNotificationMethod = new AlternateNotificationMethod();
         Phone phone = new Phone();
-        ApplicationContext applicationContext = new ApplicationContext();
         SenderBatchHeader senderBatchHeaderRequest = new SenderBatchHeader();
         
     
         items.setRecipientType(itemsRequestDTO.getRecipient_type());
-        items.setNote(itemsRequestDTO.getNote());
-        items.setReceiver(itemsRequestDTO.getReceiver());
-        items.setSenderItemId(itemsRequestDTO.getSender_item_id());
-        items.setRecipientWallet(itemsRequestDTO.getRecipient_wallet());
-
-        amount.setCurrency(itemsRequestDTO.getAmount().getCurrency());
+         amount.setCurrency(itemsRequestDTO.getAmount().getCurrency());
         amount.setValue(itemsRequestDTO.getAmount().getValue());
 
-        
+        //items.setNote(itemsRequestDTO.getNote());
+        items.setSenderItemId(itemsRequestDTO.getSender_item_id());
+        items.setReceiver(itemsRequestDTO.getReceiver());
+
         phone.setCountryCode(itemsRequestDTO.getAlternate_notification_method().getPhone().getCountryCode());
         phone.setNationalNumber(itemsRequestDTO.getAlternate_notification_method().getPhone().getNationalNumber());
-        phone.setExtensionNumber(itemsRequestDTO.getAlternate_notification_method().getPhone().getExtensionNumber());
         alternateNotificationMethod.setPhone(phone);
         
         items.setNotificationLanguage(itemsRequestDTO.getNotification_language());
-        
-        applicationContext.setSocialFeedPrivacy(itemsRequestDTO.getApplication_context().getSocialFeedPrivacy());
-        applicationContext.setHollerUrl(itemsRequestDTO.getApplication_context().getHollerUrl());
-        applicationContext.setLogoUrl(itemsRequestDTO.getApplication_context().getLogoUrl());
-        items.setApplicationContext(applicationContext);
-
-        items.setPurpose(itemsRequestDTO.getPurpose());
-
+       
         senderBatchHeaderRequest.setSenderBatchId(senderBatchHeaderRequestDTO.getSenderBatchId());
-        senderBatchHeaderRequest.setRecipientType(senderBatchHeaderRequestDTO.getRecipientType());
         senderBatchHeaderRequest.setEmailSubject(senderBatchHeaderRequestDTO.getEmailSubject());
         senderBatchHeaderRequest.setEmailMessage(senderBatchHeaderRequestDTO.getEmailMessage());
-        senderBatchHeaderRequest.setNote(senderBatchHeaderRequestDTO.getNote());
+        
 
         senderBatchHeaderRepository.save(senderBatchHeaderRequest);
         itemsRepo.save(items);
+        amountRepository.save(amount);
+        alternateNotificationMethodRepository.save(alternateNotificationMethod);
+        phoneRepository.save(phone);
+        alternateNotificationMethod.setPhone(phone);
         
-        //Response entity initialization
-        Links links = new Links();
+
+        
+       
         BatchHeader batchHeader = new BatchHeader();
+            batchHeaderResponseDTO.setTimeCreated(java.time.LocalDateTime.now().toString());
+//batchHeaderResponseDTO.setTimeCompleted("NOT_COMPLETED");
+//batchHeaderResponseDTO.setTimeClosed("NOT_CLOSED");
+//batchHeaderResponseDTO.setFundingSource("PAYPAL");
 
+//SenderBatchHeaderResponseDTO senderBatchHeaderResponseDTO2 = new SenderBatchHeaderResponseDTO();
+// set amount
+//AmountRequestDTO amountResponseDTO = new AmountRequestDTO();
+//amountResponseDTO.setCurrency(amount.getCurrency());
+//amountResponseDTO.setValue(amount.getValue());
+//batchHeaderResponseDTO.setAmount(amountResponseDTO);
+/* 
+// set fees
+FeesResponseDTO feesResponseDTO = new FeesResponseDTO();
+feesResponseDTO.setCurrency("USD");
+feesResponseDTO.setValue("0.25");
+batchHeaderResponseDTO.setFees(feesResponseDTO);
+*/
+// set sender batch header extra fields
+//senderBatchHeaderResponseDTO2.setRecipientType(SenderBatchHeaderRequestDTO.getRecipientType());
+//senderBatchHeaderResponseDTO.setNote(itemsRequestDTO.getNote());
         SenderBatchHeaderResponseDTO senderBatchHeaderResponse = new SenderBatchHeaderResponseDTO();
-    
-    
-        links.setHref(linkResponseDTO.getHref());
-        links.setRel(linkResponseDTO.getRel());
-        links.setMethod(linkResponseDTO.getMethod());
 
-        batchHeader.setPayoutBatchId(batchHeaderResponseDTO.getPayoutBatchId());
-        batchHeader.setTimeCreated(batchHeaderResponseDTO.getTimeCreated());
-        batchHeader.setBatchStatus(batchHeaderResponseDTO.getBatchStatus());
+senderBatchHeaderResponse.setSenderBatchId(senderBatchHeaderRequestDTO.getSenderBatchId());
+senderBatchHeaderResponse.setEmailSubject(senderBatchHeaderRequestDTO.getEmailSubject());
+senderBatchHeaderResponse.setEmailMessage(senderBatchHeaderRequestDTO.getEmailMessage());
+senderBatchHeaderResponse.setRecipientType(itemsRequestDTO.getRecipient_type());
 
-        senderBatchHeaderResponse.setSenderBatchId(senderBatchHeaderResponseDTO.getSenderBatchId());
-        senderBatchHeaderResponse.setEmailSubject(senderBatchHeaderResponseDTO.getEmailSubject());
-        senderBatchHeaderResponse.setEmailMessage(senderBatchHeaderResponseDTO.getEmailMessage());
-        senderBatchHeaderResponse.setRecipientType(senderBatchHeaderResponseDTO.getRecipientType());
+batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderResponse);
+
+
+       // batchHeader.setPayoutBatchId(batchHeaderResponseDTO.getPayoutBatchId());
+      
+        //batchHeader.setBatchStatus(batchHeaderResponseDTO.getBatchStatus());
+      //  batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderRequestDTO); 
+        batchHeaderResponseDTO.setPayoutBatchId(senderBatchHeaderRequest.getSenderBatchId()); 
+        batchHeaderResponseDTO.setBatchStatus("PENDING");
+
+        
+
+        linkResponseDTO.setHref("/v1/payouts/" + senderBatchHeaderRequest.getSenderBatchId()); 
+        linkResponseDTO.setRel("self"); 
+        linkResponseDTO.setMethod("GET");
         
        
         responseDTO.setLinks(linkResponseDTO);
@@ -188,7 +219,7 @@ public PayoutServiceImpl(ItemsRepository itemsRepo, SenderBatchHeaderRepository 
         payoutItem.setNote(itemsResponseDTO.getPayout_item().getNote());
         payoutItem.setReceiver(itemsResponseDTO.getPayout_item().getReceiver());
         payoutItem.setSenderItemId(itemsResponseDTO.getPayout_item().getSenderItemId());
-        payoutItem.setRecipientType(itemsResponseDTO.getPayout_item().getRecipientType());
+        
 
         payoutItemAmount.setCurrency(itemsResponseDTO.getPayout_item().getAmount().getCurrency());
         payoutItemAmount.setValue(itemsResponseDTO.getPayout_item().getAmount().getValue());

@@ -27,4 +27,9 @@ public class Amount {
 
     @Column(name = "value")
     private String value;
+
+    public void save(Amount amount) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 }

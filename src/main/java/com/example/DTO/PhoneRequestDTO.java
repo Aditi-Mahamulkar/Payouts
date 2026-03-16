@@ -1,15 +1,15 @@
 package com.example.DTO;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PhoneRequestDTO {
 
+    @JsonProperty("country_code")
     private String countryCode;
+
+    @JsonProperty("national_number")
     private String nationalNumber;
-    private String extensionNumber;
+
 }

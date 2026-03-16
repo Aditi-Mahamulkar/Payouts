@@ -11,5 +11,6 @@ public class SenderBatchHeaderResponseDTO {
   private String emailSubject;
   private String emailMessage;
   private String recipientType;
+  //private String note;
     
 }

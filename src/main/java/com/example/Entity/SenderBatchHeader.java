@@ -23,11 +23,11 @@ public class SenderBatchHeader {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "sender_batch_id", nullable = false)
+    @Column(name = "sender_batch_id")
     private String senderBatchId;
 
-    @Column(name = "recipient_type", nullable = false)
-    private String recipientType;
+  //  @Column(name = "recipient_type")
+   // private String recipientType;
 
     @Column(name = "email_subject")
     private String emailSubject;
@@ -35,6 +35,6 @@ public class SenderBatchHeader {
     @Column(name = "email_message", columnDefinition = "TEXT")
     private String emailMessage;
 
-    @Column(name = "note", columnDefinition = "TEXT")
-    private String note;
+   // @Column(name = "note", columnDefinition = "TEXT")
+   // private String note;
 }

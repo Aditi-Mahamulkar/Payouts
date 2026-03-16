@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.DTO.ItemsRequestDTO;
+import com.example.DTO.createRequestDTO;
 import com.example.DTO.createResponseDTO;
 import com.example.Service.PayoutService;
 
@@ -31,10 +32,10 @@ public class PayoutController {
     }
 
     @PostMapping("/payouts") //(http://localhost:8080/v1/payments/payouts)
-    public ResponseEntity<createResponseDTO> createPayout(@RequestBody ItemsRequestDTO itemsRequestDTO)
+    public ResponseEntity<createResponseDTO> createPayout(@RequestBody createRequestDTO createRequestDTO)
     {
                 //System.out.println(itemsRequestDTO.getEmpAddress()+"\n"+itemsRequestDTO.getEmpDeptName()+"\n"+itemsRequestDTO.getEmpName()+"\n"+itemsRequestDTO.getEmpSalary());
-        return new ResponseEntity<>(payoutService.createPayout(itemsRequestDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(payoutService.createPayout(createRequestDTO), HttpStatus.CREATED);
     }
 
    
