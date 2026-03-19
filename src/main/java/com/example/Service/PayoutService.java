@@ -13,7 +13,7 @@ public interface PayoutService {
 
     // ShowPayoutBatchResponseDTO  getBatchDetails(String payout_batch_Id);
 
-    // ShowPayoutItemResponseDTO getPayoutItemDetails(String payout_Item_Id);
+    ShowPayoutItemResponseDTO getPayoutItemDetails(String payout_Item_Id);
     
    // CancelResponseDTO cancelPayout(String payout_Item_Id);
 

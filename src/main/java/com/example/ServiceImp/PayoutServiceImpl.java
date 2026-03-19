@@ -121,26 +121,7 @@ public PayoutServiceImpl(ItemsRepository itemsRepo, SenderBatchHeaderRepository 
        
         BatchHeader batchHeader = new BatchHeader();
             batchHeaderResponseDTO.setTimeCreated(java.time.LocalDateTime.now().toString());
-//batchHeaderResponseDTO.setTimeCompleted("NOT_COMPLETED");
-//batchHeaderResponseDTO.setTimeClosed("NOT_CLOSED");
-//batchHeaderResponseDTO.setFundingSource("PAYPAL");
 
-//SenderBatchHeaderResponseDTO senderBatchHeaderResponseDTO2 = new SenderBatchHeaderResponseDTO();
-// set amount
-//AmountRequestDTO amountResponseDTO = new AmountRequestDTO();
-//amountResponseDTO.setCurrency(amount.getCurrency());
-//amountResponseDTO.setValue(amount.getValue());
-//batchHeaderResponseDTO.setAmount(amountResponseDTO);
-/* 
-// set fees
-FeesResponseDTO feesResponseDTO = new FeesResponseDTO();
-feesResponseDTO.setCurrency("USD");
-feesResponseDTO.setValue("0.25");
-batchHeaderResponseDTO.setFees(feesResponseDTO);
-*/
-// set sender batch header extra fields
-//senderBatchHeaderResponseDTO2.setRecipientType(SenderBatchHeaderRequestDTO.getRecipientType());
-//senderBatchHeaderResponseDTO.setNote(itemsRequestDTO.getNote());
         SenderBatchHeaderResponseDTO senderBatchHeaderResponse = new SenderBatchHeaderResponseDTO();
 
 senderBatchHeaderResponse.setSenderBatchId(senderBatchHeaderRequestDTO.getSenderBatchId());
@@ -174,7 +155,7 @@ batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderResponse);
 
     }
     
-   /*  @Override
+   /*   @Override
     public ShowPayoutBatchResponseDTO getBatchDetails(String payout_batch_Id) {
 
         //Initialize DTOs
@@ -248,13 +229,14 @@ batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderResponse);
 
         errors.setName(itemsResponseDTO.getName());
     }
-/*
+        */
+
     @Override
     public ShowPayoutItemResponseDTO getPayoutItemDetails(String payout_Item_Id) {
         
     }
 
-    @Override
+ /*    @Override
     public CancelResponseDTO cancelPayout(String payout_Item_Id) {
         
     }
