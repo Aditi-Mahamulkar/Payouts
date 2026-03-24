@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Amount {
+public class AmountResponse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -28,8 +28,5 @@ public class Amount {
     @Column(name = "value")
     private String value;
 
-    public void save(Amount amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
+   
 }

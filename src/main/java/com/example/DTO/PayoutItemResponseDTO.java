@@ -20,4 +20,13 @@ public class PayoutItemResponseDTO {
 
   private String recipientWallet;
   private String purpose;
+  public void setSenderItemId(String senderItemId2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setSenderItemId'");
+  }
+  public void setRecipientName(RecipientNameResponseDTO recipientName2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setRecipientName'");
+  }
+  
 } 

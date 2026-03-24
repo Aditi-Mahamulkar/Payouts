@@ -9,7 +9,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Items {
+public class ItemsRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -38,7 +38,7 @@ public class Items {
 
     @OneToOne
     @JoinColumn(name = "amount_id")
-    private Amount amount;
+    private AmountRequest amount;
 
     @OneToOne
     @JoinColumn(name = "alternate_notification_method_id")

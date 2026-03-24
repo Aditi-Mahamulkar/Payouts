@@ -1,5 +1,7 @@
 package com.example.Service;
 
+import org.springframework.http.ResponseEntity;
+
 import com.example.DTO.CancelResponseDTO;
 import com.example.DTO.ItemsRequestDTO;
 import com.example.DTO.ShowPayoutBatchResponseDTO;
@@ -11,10 +13,10 @@ public interface PayoutService {
 
     createResponseDTO createPayout(createRequestDTO requestDTO);
 
-    // ShowPayoutBatchResponseDTO  getBatchDetails(String payout_batch_Id);
+     ShowPayoutBatchResponseDTO  getBatchDetails(String payout_batch_Id);
 
     ShowPayoutItemResponseDTO getPayoutItemDetails(String payout_Item_Id);
     
-   // CancelResponseDTO cancelPayout(String payout_Item_Id);
+   ResponseEntity<CancelResponseDTO> cancelPayout(String payout_Item_Id);
 
 }

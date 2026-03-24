@@ -8,6 +8,10 @@ import java.util.List;
 @AllArgsConstructor
 public class ShowPayoutItemResponseDTO {
 
+    public ShowPayoutItemResponseDTO() {
+        //TODO Auto-generated constructor stub
+    }
+
     private String payoutItemId;
     private String transactionId;
     private String activityId;

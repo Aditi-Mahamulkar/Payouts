@@ -4,9 +4,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.Entity.Amount;
+import com.example.Entity.AmountRequest;
 
-public interface AmountRepository extends JpaRepository<Amount, UUID> {
+public interface AmountRepository extends JpaRepository<AmountRequest, UUID> {
     
     
 }

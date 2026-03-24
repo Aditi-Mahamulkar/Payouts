@@ -4,9 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.util.List;
 
+import com.example.Entity.Links;
+
 @Data
 @AllArgsConstructor
 public class CancelResponseDTO {
+
+    public CancelResponseDTO() {
+        //TODO Auto-generated constructor stub
+    }
 
     private String payoutItemId;
     private String transactionId;
@@ -15,7 +21,7 @@ public class CancelResponseDTO {
     private String senderBatchId;
     private String timeProcessed;
 
-    private List<LinkResponseDTO> links;
+    private LinkResponseDTO links;
 
     private String transactionStatus;
 
@@ -26,4 +32,9 @@ public class CancelResponseDTO {
     private CurrencyConversionResponseDTO currencyConversion;
 
     private ErrorResponseDTO errors;
+
+    public void setLinks(Links links2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLinks'");
+    }
 }

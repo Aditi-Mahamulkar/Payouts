@@ -11,7 +11,7 @@ public class ItemsResponseDTO {
     private String activity_id;
     private String time_processed;
 
-    private List<LinkResponseDTO> links;
+    private LinkResponseDTO links;
 
     private String transaction_status;
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.DTO.CancelResponseDTO;
 import com.example.DTO.ItemsRequestDTO;
 import com.example.DTO.ShowPayoutItemResponseDTO;
 import com.example.DTO.createRequestDTO;
@@ -45,6 +46,16 @@ public class PayoutController {
             @PathVariable String payout_item_id) {
 
         return payoutService.getPayoutItemDetails(payout_item_id);
+    }
+
+     @PostMapping("/{payout_item_id}/cancel")
+    public ResponseEntity<CancelResponseDTO> cancelPayoutItem(
+            @PathVariable("payout_item_id") String payout_item_id) {
+                return (ResponseEntity<CancelResponseDTO>) payoutService.cancelPayout(payout_item_id);
+                
+       // ResponseEntity<CancelResponseDTO> response = payoutCancelService.cancelPayout(payout_item_id);
+
+      //  return ResponseEntity.ok(response);
     }
 }
 

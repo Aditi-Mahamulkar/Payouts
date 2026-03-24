@@ -35,7 +35,7 @@ public class PayoutItem {
 
     @OneToOne
     @JoinColumn(name = "amount_id")
-    private Amount amount;
+    private AmountRequest amount;
 
     @OneToOne
     @JoinColumn(name = "recipient_name_id")
