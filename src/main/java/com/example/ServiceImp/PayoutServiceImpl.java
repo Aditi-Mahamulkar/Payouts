@@ -32,7 +32,6 @@ import com.example.DTO.ToAmountResponseDTO;
 import com.example.DTO.createRequestDTO;
 import com.example.DTO.createResponseDTO;
 import com.example.Entity.AlternateNotificationMethod;
-import com.example.Entity.Amount;
 import com.example.Entity.AmountRequest;
 import com.example.Entity.AmountResponse;
 import com.example.Entity.ApplicationContext;
@@ -138,10 +137,7 @@ senderBatchHeaderResponse.setRecipientType(itemsRequestDTO.getRecipient_type());
 batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderResponse);
 
 
-       // batchHeader.setPayoutBatchId(batchHeaderResponseDTO.getPayoutBatchId());
-      
-        //batchHeader.setBatchStatus(batchHeaderResponseDTO.getBatchStatus());
-      //  batchHeaderResponseDTO.setSenderBatchHeader(senderBatchHeaderRequestDTO); 
+       
         batchHeaderResponseDTO.setPayoutBatchId(senderBatchHeaderRequest.getSenderBatchId()); 
         batchHeaderResponseDTO.setBatchStatus("PENDING");
 
